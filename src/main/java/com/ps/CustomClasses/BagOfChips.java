@@ -1,7 +1,8 @@
 package com.ps.CustomClasses;
 
-public class Chips extends Product {
-    public Chips() {
+public class BagOfChips extends Product {
+    public BagOfChips() {
         super("Chips");
     }
+}
 
