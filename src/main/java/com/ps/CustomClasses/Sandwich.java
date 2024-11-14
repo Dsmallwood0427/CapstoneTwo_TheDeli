@@ -24,13 +24,13 @@ import java.util.List;
         public double getPrice() {
             double basePrice = 0;
             switch (size) {
-                case "4 inch":
+                case "4' inch":
                     basePrice = 5.50;
                     break;
-                case "8 inch":
+                case "8' inch":
                     basePrice = 7.00;
                     break;
-                case "12 inch":
+                case "12' inch":
                     basePrice = 8.50;
                     break;
             }
