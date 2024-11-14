@@ -18,11 +18,6 @@ public abstract class Product implements Price {
     public String getName() {
         return name;
     }
-}
-
-
-public interface Product extends Pricing {
-
 
 
     public Product(String sandwhich, String drink, String bagOfChips, String orderName) {
@@ -36,8 +31,6 @@ public interface Product extends Pricing {
 
 
     }
-}
-
 
     public String getOrderName() {
         return orderName;
@@ -47,13 +40,15 @@ public interface Product extends Pricing {
         this.orderName = orderName;
     }
 
-    public void addAddOn(AddOn addOn){
+    public void addAddOn(AddOn addOn) {
         addOns.add(addOn);
     }
-    public List<AddOn> getAddOns(){
+
+    public List<AddOn> getAddOns() {
         return this.addOns;
     }
-    public void removeAddOn(AddOn addOn){
+
+    public void removeAddOn(AddOn addOn) {
         addOns.remove(addOn);
     }
 
@@ -61,5 +56,7 @@ public interface Product extends Pricing {
     default double getPrice() {
         return 0;
     }
-
 }
+
+
+
