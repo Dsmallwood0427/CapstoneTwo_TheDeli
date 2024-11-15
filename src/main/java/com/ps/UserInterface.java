@@ -122,12 +122,14 @@ public class UserInterface {
 
         System.out.println("Vegetables (Free):");
         for (Toppings topping : availableToppings) {
-            if (topping.getPrice(size) == 0) {
-                System.out.println(index + ". " + topping.getType());
+            if (topping.getType().equals("Lettuce") || topping.getType().equals("Tomatoes") ||
+                    topping.getType().equals("Pickles") || topping.getType().equals("Onions")) {
+                System.out.println(index + ". " + topping.getType()+ " - $" + topping.getPrice(size));
                 index++;
 
             }
         }
+
 
         System.out.println("Select toppings by number (type 'done' when finished):");
         while (scanner.hasNext()) {

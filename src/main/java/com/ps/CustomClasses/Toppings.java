@@ -71,8 +71,8 @@ import java.util.List;
 
             // Vegetable toppings (free)
             toppings.add(new Toppings("Lettuce", 0.00, 0.00, 0.00));
-            toppings.add(new Toppings("Tomato", 0.00, 0.00, 0.00));
-            toppings.add(new Toppings("Onion", 0.00, 0.00, 0.00));
+            toppings.add(new Toppings("Tomatoes", 0.00, 0.00, 0.00));
+            toppings.add(new Toppings("Onions", 0.00, 0.00, 0.00));
             toppings.add(new Toppings("Pickles", 0.00, 0.00, 0.00));
             toppings.add(new Toppings("Peppers", 0.00, 0.00, 0.00));
 
