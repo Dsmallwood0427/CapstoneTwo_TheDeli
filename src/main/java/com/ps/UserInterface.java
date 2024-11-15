@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static jdk.internal.jrtfs.JrtFileAttributeView.AttrID.size;
 
 public class UserInterface {
     private Scanner scanner;
@@ -72,7 +71,7 @@ public class UserInterface {
             case "2" -> "Wheat";
             case "3" -> "Rye";
             case "4" -> "Wrap";
-            default -> "White";
+            default -> "white";
 
         };
 
@@ -100,6 +99,7 @@ public class UserInterface {
         System.out.println("Select Toppings:");
         System.out.println("Meats:");
         int index = 1;
+        String size = null;
         for (Toppings toppings : availableToppings) {
             if (toppings.getType().equals("Turkey") || toppings.getType().equals("Ham") ||
                     toppings.getType().equals("Roast Beef") || toppings.getType().equals("Salami")) {
