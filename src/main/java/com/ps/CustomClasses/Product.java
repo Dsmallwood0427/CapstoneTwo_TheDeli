@@ -4,39 +4,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public abstract class Product implements Price {
-    protected String name;
-    private String sandwhich;
-    private String drink;
-    private String bagOfChips;
+public abstract class Product implements Pricing {
+    protected String orderName;
     private List<AddOn> addOns;
 
     public Product(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-
-    public Product(String sandwhich, String drink, String bagOfChips, String orderName) {
-        this.sandwhich = sandwhich;
-        this.drink = drink;
-        this.bagOfChips = bagOfChips;
         this.orderName = orderName;
-        for (AddOn addOn : this.addOns = new ArrayList<>()) {
-
-        }
-
-
     }
 
     public String getOrderName() {
         return orderName;
     }
 
-    public void setOrderName(String orderName) {
+
+    public Product(String sandwhich, String drink, String bagOfChips, String orderName) {
+        this.orderName = orderName;
+        for (AddOn addOn : this.addOns = new ArrayList<>()) {
+
+        }
+    }
+
+  public String getOrderName() {
+       return orderName;
+    }
+
+   public void setOrderName(String orderName) {
         this.orderName = orderName;
     }
 
@@ -53,7 +45,7 @@ public abstract class Product implements Price {
     }
 
     @Override
-    default double getPrice() {
+    public double getPrice() {
         return 0;
     }
 }
