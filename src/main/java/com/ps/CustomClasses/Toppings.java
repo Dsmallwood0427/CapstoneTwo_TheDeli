@@ -22,10 +22,10 @@ import java.util.List;
 
         public double getPrice(String size) {
             return switch (size) {
-                case "4 inch" -> priceFor4Inch;
-                case "8 inch" -> priceFor8Inch;
-                case "12 inch" -> priceFor12Inch;
-                default -> 3.00;
+                case "4 inch" -> 5.50;
+                case "8 inch" -> 7.00;
+                case "12 inch" -> 8.50;
+                default -> 5.00;
             };
         }
         public double getExtraPrice(String size) {
@@ -57,7 +57,7 @@ import java.util.List;
             List<Toppings> toppings = new ArrayList<>();
 
             // Meat toppings
-            toppings.add(new Toppings("Turkey", 1.00, 2.00, 3.00)); // Prices for 4, 8, and 12 inches
+            toppings.add(new Toppings("Turkey", 1.00, 2.00, 3.00));
             toppings.add(new Toppings("Ham", 1.00, 2.00, 3.00));
             toppings.add(new Toppings("Roast Beef", 1.00, 2.00, 3.00));
             toppings.add(new Toppings("Salami", 1.00, 2.00, 3.00));
@@ -77,8 +77,8 @@ import java.util.List;
             toppings.add(new Toppings("Peppers", 0.00, 0.00, 0.00));
 
             // Extra toppings
-            toppings.add(new Toppings("extraMeat", 0.05, 0.05, 0.05)); // Placeholder for extra meat
-            toppings.add(new Toppings("extraCheese", 0.30, 0.60, 0.90)); // Placeholder for extra cheese
+            toppings.add(new Toppings("extraMeat", 0.05, 0.05, 0.05));
+            toppings.add(new Toppings("extraCheese", 0.30, 0.60, 0.90));
 
             return toppings;
         }

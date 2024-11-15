@@ -8,9 +8,9 @@ public class ReceiptManager {
     }
 
     public void printReceipt() {
-        System.out.println("=== Receipt ===");
+        System.out.println("\u001B[34m=== Receipt ===\u001B[0m");
         System.out.println("Order Details:");
-        System.out.printf("Total Price: $%.2f%n", order.getTotalPrice());
+        System.out.printf("\u001B[31m2.Total Price: $%.2f%n\u001B[0m", order.getTotalPrice());
         System.out.println("================");
     }
 }

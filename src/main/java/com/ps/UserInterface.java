@@ -145,7 +145,25 @@ public class UserInterface {
                 String choice = scanner.nextLine();
             }
         }
+        System.out.println("Would you like extra meat? (yes/no)");
+        if (scanner.next().equalsIgnoreCase("yes")) {
+            Toppings extraMeat = availableToppings.get(availableToppings.size() - 2); // Extra meat
+            sandwich.addTopping(extraMeat);
+            double extraPrice = extraMeat.getExtraPrice(sandwich.getSize());
+            System.out.println("Extra meat added for an additional cost of: $" + extraPrice);
+        }
+
+        // Option to add extra cheese
+        System.out.println("Would you like extra cheese? (yes/no)");
+        if (scanner.next().equalsIgnoreCase("yes")) {
+            Toppings extraCheese = availableToppings.get(availableToppings.size() - 1); // Extra cheese
+            sandwich.addTopping(extraCheese);
+            double extraPrice = extraCheese.getExtraPrice(sandwich.getSize());
+            System.out.println("Extra cheese added for an additional cost of: $" + extraPrice);
+        }
     }
+
+
 
     private void addDrink() {
         System.out.println("Select Drink Size: (1) Small, (2) Medium, (3) Large");
