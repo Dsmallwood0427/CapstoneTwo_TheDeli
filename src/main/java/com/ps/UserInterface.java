@@ -1,11 +1,12 @@
 package com.ps;
 
-import com.ps.CustomClasses.BagOfChips;
-import com.ps.CustomClasses.Drink;
-import com.ps.CustomClasses.Order;
-import com.ps.CustomClasses.Sandwich;
+import com.ps.CustomClasses.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+
+import static jdk.internal.jrtfs.JrtFileAttributeView.AttrID.size;
 
 public class UserInterface {
     private Scanner scanner;
@@ -71,7 +72,8 @@ public class UserInterface {
             case "2" -> "Wheat";
             case "3" -> "Rye";
             case "4" -> "Wrap";
-            default -> "Salad";
+            default -> "White";
+
         };
 
         System.out.println("Select Size: (1) 4 inch, (2) 8 inch, (3) 12 inch");
@@ -92,25 +94,52 @@ public class UserInterface {
     }
 
     private void addToppings(Sandwich sandwich) {
-        System.out.println("Add Topping: (1) Meat, (2) Cheese, (3) Veggies, (4) Sauces (5) Extra Toppings");
-        String toppingChoice = scanner.nextLine();
-        switch (toppingChoice) {
-            case "1":
-                sandwich.addTopping("meat");
-                break;
-            case "2":
-                sandwich.addTopping("cheese");
-                break;
-            case "3":
-                sandwich.addTopping("veggies");
-                break;
-            case "4":
-                sandwich.addTopping("sauces");
-                break;
+        List<Toppings> availableToppings = Toppings.getAvailableToppings();
+        List<Toppings> selectedToppings = new ArrayList<>();
 
-            case "5":
-                sandwich.addTopping("extraTopping");
+        System.out.println("Select Toppings:");
+        System.out.println("Meats:");
+        int index = 1;
+        for (Toppings toppings : availableToppings) {
+            if (toppings.getType().equals("Turkey") || toppings.getType().equals("Ham") ||
+                    toppings.getType().equals("Roast Beef") || toppings.getType().equals("Salami")) {
+                System.out.println(index + ". " + toppings.getType() + " - $" + toppings.getPrice(size));
+                index++;
+            }
+        }
+
+        System.out.println("Cheeses:");
+        for (Toppings topping : availableToppings) {
+            if (topping.getType().equals("Cheddar") || topping.getType().equals("Swiss") ||
+                    topping.getType().equals("American") || topping.getType().equals("Pepper Jack")) {
+                System.out.println(index + ". " + topping.getType() + " - $" + topping.getPrice(size));
+                index++;
+            }
+        }
+
+        System.out.println("Vegetables (Free):");
+        for (Toppings topping : availableToppings) {
+            if (topping.getPrice(size) == 0) {
+                System.out.println(index + ". " + topping.getType());
+                index++;
+            }
+        }
+
+        System.out.println("Select toppings by number (type 'done' when finished):");
+        while (scanner.hasNext()) {
+            String input = scanner.next();
+            if (input.equalsIgnoreCase("done")) {
                 break;
+            }
+            int toppingIndex = Integer.parseInt(input) - 1; // Convert to zero-based index
+            if (toppingIndex >= 0 && toppingIndex < availableToppings.size()) {
+                Toppings selectedToppings = availableToppings.get(toppingIndex);
+                selectedToppings.add(selectedToppings);
+                sandwich.addTopping(selectedToppings);
+                System.out.println("Added: " + selectedToppings.getType());
+            } else {
+                System.out.println("Invalid selection. Please try again.");
+            }
         }
     }
 
