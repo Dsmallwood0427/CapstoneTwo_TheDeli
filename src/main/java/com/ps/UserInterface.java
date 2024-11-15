@@ -96,14 +96,15 @@ public class UserInterface {
         List<Toppings> availableToppings = Toppings.getAvailableToppings();
         List<Toppings> selectedToppings = new ArrayList<>();
 
+
         System.out.println("Select Toppings:");
         System.out.println("Meats:");
         int index = 1;
-        String size = null;
-        for (Toppings toppings : availableToppings) {
-            if (toppings.getType().equals("Turkey") || toppings.getType().equals("Ham") ||
-                    toppings.getType().equals("Roast Beef") || toppings.getType().equals("Salami")) {
-                System.out.println(index + ". " + toppings.getType() + " - $" + toppings.getPrice(size));
+        String size;
+        for (Toppings topping : availableToppings) {
+            if (topping.getType().equals("Turkey") || topping.getType().equals("Ham") ||
+                    topping.getType().equals("Roast Beef") || topping.getType().equals("Salami")) {
+                System.out.println(index + ". " + topping.getType() + " - $" + topping.getPrice(size));
                 index++;
             }
         }
@@ -133,10 +134,9 @@ public class UserInterface {
             }
             int toppingIndex = Integer.parseInt(input) - 1; // Convert to zero-based index
             if (toppingIndex >= 0 && toppingIndex < availableToppings.size()) {
-                Toppings selectedToppings = availableToppings.get(toppingIndex);
-                selectedToppings.add(selectedToppings);
-                sandwich.addTopping(selectedToppings);
-                System.out.println("Added: " + selectedToppings.getType());
+                Toppings selectedTopping = availableToppings.get(toppingIndex);
+                selectedToppings.add(selectedTopping);
+                System.out.println("Added: " + selectedTopping.getType());
             } else {
                 System.out.println("Invalid selection. Please try again.");
             }
@@ -166,7 +166,10 @@ public class UserInterface {
         System.out.println(currentOrder);
         System.out.println("Would you like to confirm your order? (yes/no)");
         if (scanner.next().equalsIgnoreCase("yes")) {
+            ReceiptManager receiptManager = new ReceiptManager(currentOrder);
+            receiptManager.printReceipt(); // Print the receipt
             System.out.println("Thank you for your order!");
+            currentOrder = new Order(); // Reset order after checkout
         } else {
             currentOrder = new Order(); // Reset order
             System.out.println("Order cancelled.");

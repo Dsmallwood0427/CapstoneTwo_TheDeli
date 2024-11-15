@@ -31,8 +31,8 @@ public class Order {
         orderDetails.append("Total Price: $").append(getTotalPrice());
         return orderDetails.toString();
     }
-
 }
+
 
 
 

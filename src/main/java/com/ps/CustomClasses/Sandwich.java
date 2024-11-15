@@ -3,44 +3,53 @@ package com.ps.CustomClasses;
 import java.util.ArrayList;
 import java.util.List;
 
-    public class Sandwich extends Product {
-        private String bread;
-        private String size; // "4 inch", "8 inch", "12 inch"
-        private List<String> toppings;
-        private boolean toasted;
+import java.util.ArrayList;
+import java.util.List;
 
-        public Sandwich(String bread, String size, boolean toasted) {
-            super("Sandwich");
-            this.bread = bread;
-            this.size = size;
-            this.toppings = new ArrayList<>();
-            this.toasted = toasted;
-        }
+public class Sandwich {
+    private final String size;
+    private final List<Toppings> toppings;
 
-        public void addTopping(String topping) {
-            toppings.add(topping);
-        }
-
-        public double getPrice() {
-            double basePrice = 0;
-            switch (size) {
-                case "4' inch":
-                    basePrice = 5.50;
-                    break;
-                case "8' inch":
-                    basePrice = 7.00;
-                    break;
-                case "12' inch":
-                    basePrice = 8.50;
-                    break;
-            }
-            return basePrice + (toppings.contains("meat") ? 1 : 0); // Example price addition for toppings
-        }
-
-        @Override
-        public String toString() {
-            return String.format("%s: %s, Size: %s, Toppings: %s, Toasted: %s", name, bread, size, toppings.toString(), toasted ? "Yes" : "No");
-        }
+    public Sandwich(String bread, String size, boolean toasted) {
+        this.size = size;
+        this.toppings = new ArrayList<>();
     }
 
+    public String getSize() {
+        return size;
+    }
 
+    public void addTopping(Toppings topping) {
+        toppings.add(topping);
+    }
+
+    public double calculatePrice() {
+        double price = 0;
+        // Base price for the bread size
+        switch (size) {
+            case "4 inch":
+                price += 5.50; // Base price for 4 inch bread
+                break;
+            case "8 inch":
+                price += 7.00; // Base price for 8 inch bread
+                break;
+            case "12 inch":
+                price += 8.50; // Base price for 12 inch bread
+                break;
+        }
+
+        // Add prices for toppings
+        for (Toppings topping : toppings) {
+            if (topping.getType().equals("extraMeat")) {
+                price += topping.getExtraPrice(size); // Add extra meat price
+            } else if (topping.getType().equals("extraCheese")) {
+                price += topping.getExtraPrice(size); // Add extra cheese price
+            } else {
+                price += topping.getPrice(size); // Add
+
+
+            }
+        }
+        return price;
+    }
+}

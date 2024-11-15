@@ -1,9 +1,7 @@
 package com.ps.CustomClasses;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
     public class Toppings {
         private String type; // Type of topping (e.g., "meat", "cheese", "veggie")
@@ -23,16 +21,12 @@ import java.util.Map;
         }
 
         public double getPrice(String size) {
-            switch (size) {
-                case "4 inch":
-                    return priceFor4Inch;
-                case "8 inch":
-                    return priceFor8Inch;
-                case "12 inch":
-                    return priceFor12Inch;
-                default:
-                    return 0;
-            }
+            return switch (size) {
+                case "4 inch" -> priceFor4Inch;
+                case "8 inch" -> priceFor8Inch;
+                case "12 inch" -> priceFor12Inch;
+                default -> 0;
+            };
         }
         public double getExtraPrice(String size) {
             if (type.equals("extraMeat")) {
@@ -82,8 +76,14 @@ import java.util.Map;
             toppings.add(new Toppings("Pickles", 0.00, 0.00, 0.00));
             toppings.add(new Toppings("Peppers", 0.00, 0.00, 0.00));
 
+            // Extra toppings
+            toppings.add(new Toppings("extraMeat", 0.05, 0.05, 0.05)); // Placeholder for extra meat
+            toppings.add(new Toppings("extraCheese", 0.30, 0.60, 0.90)); // Placeholder for extra cheese
+
             return toppings;
         }
+
+
 
 
     }
