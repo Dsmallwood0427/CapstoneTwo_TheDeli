@@ -18,11 +18,11 @@ public class UserInterface {
 
     public void showMainMenu() {
         while (true) {
-            System.out.println("Welcome to the Deli!");
-            System.out.println("1. New Order");
-            System.out.println("2. Exit");
-            String choice = scanner.nextLine();
-            if (choice.equals("1")) {
+            System.out.println("\u001B[34mWelcome to the Deli!\u001B[0m"); // Blue text
+            System.out.println("\u001B[32m1. New Order\u001B[0m"); // Green text
+            System.out.println("\u001B[31m2. Exit\u001B[0m"); // Red text
+            int choice = scanner.nextInt();
+            if (choice == 1) {
                 showOrderMenu();
             } else {
                 break; // Exit the program
@@ -32,7 +32,7 @@ public class UserInterface {
 
     private void showOrderMenu() {
         while (true) {
-            System.out.println("Order Menu:");
+            System.out.println("\u001B[33mOrder Menu:\u001B[0m");
             System.out.println("1. Add Sandwich");
             System.out.println("2. Add Drink");
             System.out.println("3. Add Chips");
@@ -86,9 +86,9 @@ public class UserInterface {
         System.out.println("Would you like your sandwich toasted? (yes/no)");
         boolean toasted = scanner.nextLine().equalsIgnoreCase("yes");
 
-        Sandwich sandwich = new Sandwich(bread, size, toasted);
-        addToppings(sandwich);
-        currentOrder.addProduct(sandwich);
+        Sandwich Sandwich = new Sandwich(bread, size, toasted);
+        addToppings(Sandwich);
+        String sandwich = "";
         System.out.println("Sandwich added: " + sandwich);
     }
 
@@ -100,12 +100,13 @@ public class UserInterface {
         System.out.println("Select Toppings:");
         System.out.println("Meats:");
         int index = 1;
-        String size;
+        String size = "";
         for (Toppings topping : availableToppings) {
             if (topping.getType().equals("Turkey") || topping.getType().equals("Ham") ||
                     topping.getType().equals("Roast Beef") || topping.getType().equals("Salami")) {
                 System.out.println(index + ". " + topping.getType() + " - $" + topping.getPrice(size));
                 index++;
+
             }
         }
 
@@ -115,6 +116,7 @@ public class UserInterface {
                     topping.getType().equals("American") || topping.getType().equals("Pepper Jack")) {
                 System.out.println(index + ". " + topping.getType() + " - $" + topping.getPrice(size));
                 index++;
+
             }
         }
 
@@ -123,6 +125,7 @@ public class UserInterface {
             if (topping.getPrice(size) == 0) {
                 System.out.println(index + ". " + topping.getType());
                 index++;
+
             }
         }
 
@@ -139,6 +142,7 @@ public class UserInterface {
                 System.out.println("Added: " + selectedTopping.getType());
             } else {
                 System.out.println("Invalid selection. Please try again.");
+                String choice = scanner.nextLine();
             }
         }
     }
@@ -157,9 +161,9 @@ public class UserInterface {
     }
 
     private void addChips() {
-        BagOfChips chips = new BagOfChips();
-        currentOrder.addProduct(chips);
-        System.out.println("Chips added: " + chips);
+        BagOfChips bagOfChips = new BagOfChips();
+        currentOrder.addProduct(bagOfChips);
+        System.out.println("Chips added: " + bagOfChips);
     }
 
     private void checkout() {

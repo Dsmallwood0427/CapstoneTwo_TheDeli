@@ -25,7 +25,7 @@ import java.util.List;
                 case "4 inch" -> priceFor4Inch;
                 case "8 inch" -> priceFor8Inch;
                 case "12 inch" -> priceFor12Inch;
-                default -> 0;
+                default -> 3.00;
             };
         }
         public double getExtraPrice(String size) {
@@ -82,7 +82,6 @@ import java.util.List;
 
             return toppings;
         }
-
 
 
 
